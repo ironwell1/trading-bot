@@ -1,0 +1,37 @@
+{
+  "L1-MTF": {
+    "wins": 0,
+    "losses": 0,
+    "total_pnl": 0.0
+  },
+  "L2": {
+    "wins": 0,
+    "losses": 0,
+    "total_pnl": 0.0
+  },
+  "L3": {
+    "wins": 0,
+    "losses": 0,
+    "total_pnl": 0.0
+  },
+  "L4-ICT": {
+    "wins": 0,
+    "losses": 0,
+    "total_pnl": 0.0
+  },
+  "L5-GAP": {
+    "wins": 0,
+    "losses": 0,
+    "total_pnl": 0.0
+  },
+  "ORB": {
+    "wins": 0,
+    "losses": 0,
+    "total_pnl": 0.0
+  },
+  "unknown": {
+    "wins": 5,
+    "losses": 16,
+    "total_pnl": -266.46218100000004
+  }
+}
