@@ -523,7 +523,6 @@ def manage_position(symbol: str, bars: pd.DataFrame):
 # NEWS / EVENT FILTER
 # ============================================================
 
-def high_risk_keyword_present(symbol: str) -> bool:
     """
     Very simple filter:
     skip entries if very recent headlines suggest unusual macro/geopolitical chaos.
