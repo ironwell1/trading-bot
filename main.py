@@ -393,9 +393,9 @@ def calc_qty(entry: float, stop: float) -> int:
     except Exception:
         return 0
 
-   risk_dollars = equity * RISK_PER_TRADE
-if reduced_risk:
-    risk_dollars *= 0.5
+    # Risk calculation
+    risk_dollars = equity * RISK_PER_TRADE
+
     risk_per_share = max(entry - stop, 0.01)
     qty = int(risk_dollars / risk_per_share)
 
@@ -564,9 +564,6 @@ def scan_symbol(symbol: str):
     if not can_open_new_position(symbol):
         return
 
-    if high_risk_keyword_present(symbol):
-        log.info("Skipping %s due to high-risk headline filter", symbol)
-        return
 
     for setup_fn in (setup_orb, setup_pullback, setup_afternoon):
         signal = setup_fn(symbol, bars)
