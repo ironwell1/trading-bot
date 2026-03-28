@@ -50,7 +50,7 @@ SYMBOLS = ["SPY", "QQQ"]
 # Risk / execution
 RISK_PER_TRADE = 0.005
 MAX_OPEN_POSITIONS = 2
-MAX_TRADES_PER_SYMBOL_PER_DAY = 2
+MAX_TRADES_PER_SYMBOL_PER_DAY = 3
 SCAN_INTERVAL_SECONDS = 20
 
 ATR_STOP_MULT = 1.6
@@ -59,7 +59,7 @@ MAX_NOTIONAL_PCT = 0.18
 MIN_STOP_DISTANCE_PCT = 0.0025
 
 COOLDOWN_MINUTES = 30
-BREAKOUT_CONFIRM_PCT = 0.0010  # 0.10%
+BREAKOUT_CONFIRM_PCT = 0.0005
 
 # Time windows (ET)
 ORB_START = (9, 30)
@@ -354,11 +354,11 @@ def market_is_trending(bars: pd.DataFrame) -> bool:
     separation = abs(float(ema20.iloc[-1]) - float(ema50.iloc[-1])) / max(float(closes.iloc[-1]), 0.01)
     slope_ok = abs(float(ema20.iloc[-1]) - float(ema20.iloc[-5])) / max(float(closes.iloc[-1]), 0.01) > 0.0008
 
-    return separation > 0.0020 and slope_ok
+    return separation > 0.0008
 
 
 def is_lunch_chop() -> bool:
-    return hhmm_in_range(LUNCH_START, LUNCH_END)
+    return False
 
 
 def setup_environment_ok(bars: pd.DataFrame) -> bool:
@@ -374,7 +374,7 @@ def setup_environment_ok(bars: pd.DataFrame) -> bool:
     price = float(closes.iloc[-1])
     atr_pct = float(atr14.iloc[-1]) / max(price, 0.01)
 
-    if atr_pct < 0.0015:
+    if atr_pct < 0.0008:
         return False
 
     if not market_is_trending(bars):
